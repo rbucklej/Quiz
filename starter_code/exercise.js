@@ -5,7 +5,7 @@ exercise.hello = function(){
     //   QUESTION 01
     //   Return a string that says "Hello!"
     // ----------------------------------------
-    return 'Error: Question 01 not implemented';
+    return 'Hello!';
 };
 
 exercise.numberArray = function(){
@@ -13,7 +13,7 @@ exercise.numberArray = function(){
     //   QUESTION 02
     //   Return an array of numbers
     // ----------------------------------------
-    return 'Error: Question 02 not implemented';
+    return [1, 9, 38, 3];
 };
 
 exercise.nameAndAge = function(){
@@ -22,7 +22,7 @@ exercise.nameAndAge = function(){
     //   Return an object with
     //   a 'name' and 'age' property
     // ----------------------------------------
-    return 'Error: Question 03 not implemented';
+    return {'name':'Jess','age':19};
 };
 
 exercise.objectArray = function(){
@@ -31,7 +31,7 @@ exercise.objectArray = function(){
     //   Return an array of empty objects
     //   The array can have any length you like.
     // ----------------------------------------
-    return 'Error: Question 04 not implemented';
+    return [{},{},{}];
 };
 
 exercise.addProperty = function(someObject){
@@ -40,7 +40,8 @@ exercise.addProperty = function(someObject){
     //   Add the property 'name' to someObject
     //   Give 'name' any value you like.
     // ----------------------------------------
-    return 'Error: Question 05 not implemented';
+    someObject.name='Jess'
+    return someObject;
 };
 
 exercise.thirdElement = function(someArray){
@@ -48,7 +49,7 @@ exercise.thirdElement = function(someArray){
     //   QUESTION 06
     //   Return the third element of array
     // ----------------------------------------
-    return 'Error: Question 06 not implemented';
+    return someArray[2];
 };
 
 exercise.concatenate = function(string1, string2, string3){
@@ -57,6 +58,16 @@ exercise.concatenate = function(string1, string2, string3){
     //   Return the concatenation of
     //   string1, string2, string3
     // ----------------------------------------
+    array=[]
+    array.push(string1, string2, string3)
+
+    var res = array.reduce(
+        function(previous, current) {
+          return previous+current+', '
+        },
+        "['" /* TODO set correct starting value */,
+      );
+      return res.substring(0,res.length-2)+"']"
     return 'Error: Question 07 not implemented';
 };
 
@@ -66,7 +77,10 @@ exercise.greaterThanSix = function(someNumbers){
     //   Filter array for values greater than 6
     //   Return the filtered array
     // ----------------------------------------
-    return 'Error: Question 08 not implemented';
+    res=someNumbers
+        .filter(function(num){
+            return num>6})
+    return res
 };
 
 exercise.getNames = function(people){
@@ -86,7 +100,12 @@ exercise.getNames = function(people){
     //   You should return
     //     ['peter','bruce','clark','diana']
     // ----------------------------------------
-    return 'Error: Question 09 not implemented';
+    newarr=[]
+    for (i=0; i<people.length;i++){
+        nam=people[i].name
+        newarr.push(nam)
+    }
+    return newarr
 };
 
 exercise.getSalaryTotal = function(people){
@@ -106,7 +125,11 @@ exercise.getSalaryTotal = function(people){
     //   you should return
     //     10000
     // ----------------------------------------
-    return 'Error: Question 10 not implemented';
+    sal=0
+    for (i=0; i<people.length;i++){
+        sal=sal+people[i].salary
+    }
+    return sal
 };
 
 exercise.sortNumbers = function(someNumbers){
@@ -116,7 +139,19 @@ exercise.sortNumbers = function(someNumbers){
     //   return the sorted array
     //   Ascending or descenging.
     // ----------------------------------------
-    return 'Error: Question 11 not implemented';
+    someNumbers.sort(compare)
+    function compare(a,b){
+        if (a>b){
+            return 1
+        }
+        if (a<b){
+            return -1
+        }
+        if (a=b){
+            return 0
+        }
+    }
+    return someNumbers
 };
 
 exercise.executeCallback = function(callback){
@@ -124,7 +159,8 @@ exercise.executeCallback = function(callback){
     //   QUESTION 12
     //   Execute callback
     // ----------------------------------------
-    return 'Error: Question 12 not implemented';
+    
+    return callback();
 };
 
 exercise.getPersonAndJob = function(payroll){
@@ -133,7 +169,13 @@ exercise.getPersonAndJob = function(payroll){
     //   Return an array of people and jobs
     //  [['person', 'job'], ['person,job'];
     // ----------------------------------------
-    return 'Error: Question 13 not implemented';
+    newarr=[]
+    payroll.forEach(function(ele){
+        people=ele[1]
+        job=ele[2]
+        newarr.push([people,job])
+    })
+    return newarr
 };
 
 exercise.getTotalPayroll = function(payroll){
@@ -142,6 +184,11 @@ exercise.getTotalPayroll = function(payroll){
     //   Return the total payroll
     //   as an integer, use reduce
     // ----------------------------------------
+    res=payroll
+        .reduce(function(previous,current){
+            return previous[3]+current[3]
+    },0)
+    return res
     return 'Error: Question 14 not implemented';
 };
 
@@ -151,7 +198,10 @@ exercise.getEarningsAbove = function(payroll,target){
     //   Return the number of people with
     //   earnings above target
     // ----------------------------------------
-    return 'Error: Question 15 not implemented';
+    res=payroll
+        .filter(function(pay){
+            return pay[3]>target})
+    return res
 };
 
 exercise.getNumberOfZipCodesWith = function(payroll,num){
@@ -160,7 +210,16 @@ exercise.getNumberOfZipCodesWith = function(payroll,num){
     //   Return the number of zip codes
     //   with 'num' anywhere in them
     // ----------------------------------------
-    return 'Error: Question 16 not implemented';
+    newnum=Number(num)
+    count=0
+    for (i=0;i<payroll.length;i++){
+        for(j=0;j<payroll[i][4];j++){
+        if(newnum==payroll[i][4][j]){
+            count=count+1
+        }
+    }
+    }
+    return count
 };
 
 
